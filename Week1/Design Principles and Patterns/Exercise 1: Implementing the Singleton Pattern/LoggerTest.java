@@ -1,0 +1,18 @@
+public class LoggerTest {
+    public static void main(String[] args) {
+        Logger logger1 = Logger.getInstance();
+        Logger logger2 = Logger.getInstance();
+        
+        logger1.log("First log message");
+        logger2.log("Second log message");
+        
+        System.out.println("Same instance? " + (logger1 == logger2));
+        
+        try {
+            Logger logger3 = Logger.class.getDeclaredConstructor().newInstance();
+            logger3.log("This shouldn't work");
+        } catch (Exception e) {
+            System.out.println("Reflection failed: " + e.getMessage());
+        }
+    }
+}
